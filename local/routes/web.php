@@ -18,12 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'],function(){
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('siteuser','customuserController');
-Route::get('experpdf/{id}','invoiceController@experpdf')->name('experpdf');
-Route::get('deleteitem/{id}','invoiceController@deleteitem')->name('deleteitem');
-Route::resource('invoice','invoiceController');
-Route::resource('customer','customerController');
-Route::resource('setting','settingController');
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::resource('siteuser','customuserController');
+	Route::get('experpdf/{id}','invoiceController@experpdf')->name('experpdf');
+	Route::get('deleteitem/{id}','invoiceController@deleteitem')->name('deleteitem');
+	Route::resource('invoice','invoiceController');
+	Route::resource('customer','customerController');
+	Route::resource('setting','settingController');
+	Route::get('/calendar', 'HomeController@calendarData')->name('invoice.calendar');
+});
 
+Route::get('/test', function() {
+	$item = \App\invoice::first();
+    dd($item, $item->items);
 });

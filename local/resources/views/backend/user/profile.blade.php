@@ -75,8 +75,16 @@
                       </tr>
 
                       <tr>
-                        <th>Country</th>
-                        <td>{{$show->country}}</td>
+                        <th>Refered By</th>
+                        <td>{{$show->refered_by}}</td>
+                      </tr>
+                       <tr>
+                        <th>Status</th>
+                        <td>{{$show->status}}</td>
+                      </tr>
+                       <tr>
+                        <th>Message</th>
+                        <td>{{$show->note}}</td>
                       </tr>
 
                       <tr>

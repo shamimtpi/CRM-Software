@@ -38,11 +38,13 @@
                     <thead>
                       <tr>
                         <th>Si</th>
-                        <th>Photo</th>
                         <th>Name</th>
-                        <th>Address</th>
-                        <th>Email</th>
                         <th>Phone</th>
+                        <th>Email</th>
+                        <th>Referd By</th>
+                        <th>Added</th>
+                        <th>Status</th>
+                        <th>note</th>
                         <th>Settings</th>
                       </tr>
                     </thead>
@@ -52,17 +54,21 @@
                       <?php $x++;?>
                       <tr>
                         <td>{{$x}}</td>
-                        <td><img width="80" src="{{asset('local/public/contents/uploads/customer')}}/{{$data->img}}" alt=""> </td>
-                        <td>md. Shamim hasan</td>
-                        <td>sdfsf</td>
-                        <td>sdfsdfds</td>
-                        <td>sdfdsfdsf</td>
+                        <td>{{$data->name}}</td>
+                        <td>{{$data->phone}}</td>
+                        <td>{{$data->email}}</td>
+                        <td>{{$data->refered_by}}</td>
+                        <td>{{$data->created_at->format('d-M-Y')}}</td>
+                        <td>{{$data->status}}</td>
+                        <td>{{Str::limit($data->note, 20)}}</td>
                         <td>
                           <a href="{{route('siteuser.show',$data->id)}}" id="{{$data->id}}" class="btn btn-primary btn-xs viewdata"><i class="fa fa-folder"></i> View </a>
                           <a href="{{route('siteuser.edit',$data->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                          @if(Auth::user()->role_id==1)
                           <form action="#" method="post" style="display:inline">
                           <a href="javascript:void(0)" id="{{$data->id}}" class="trash btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                           </form>
+                          @endif
 
                         </div>
                         </td>

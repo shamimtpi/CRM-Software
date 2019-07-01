@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\user;
 use App\invoice;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -35,5 +36,26 @@ class HomeController extends Controller
         }
          $total;
         return view('backend.index',compact('totaluser','totalclient','invoice','total'));
+    }
+
+    public function calendarData(Request $request)
+    {
+        $start = Carbon::parse($request->start)->format('Y-m-d');
+        $end = Carbon::parse($request->end)->format('Y-m-d');
+        $data = invoice::whereBetween('created_at', [$start, $end])->get();
+
+        $result = [];
+
+        foreach ($data as $key => $value) {
+            $result[$key] = [
+                'start' => $value->created_at,
+                'end' => $value->created_at,
+                'title' => $value->billto_name,
+                'className' => 'bg-red',
+                'allDay' => true
+            ];
+        }
+
+        return response()->json($result, 200, [], JSON_PRETTY_PRINT);
     }
 }

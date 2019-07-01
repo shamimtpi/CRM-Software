@@ -112,21 +112,20 @@
                                <tbody>
 
                                  @foreach($items as $getitem)
-                                   <input type="text" name="colid[]" value="{{$getitem->id}}">
                                  <tr class="item-row">
                                    <td class="item-name">
                                      <div class="delete-btn">
-                                       <input type="text" class="form-control item" placeholder="Item Name" name="item_name[]" value="{{$getitem->item_name}}">
+                                       <input type="text" class="form-control item" placeholder="Item Name" name="item_name[{{ $getitem->id }}]" value="{{$getitem->item_name}}">
                                        <a class="trash" href="javascript::void(0)" id="{{$getitem->id}}" title="Remove row">X</a></div>
                                      </td>
                                      <td>
-                                       <input class="form-control price" placeholder="Price" type="number" name="item_price[]" value="{{$getitem->item_price}}">
+                                       <input class="form-control price" placeholder="Price" type="number" name="item_price[{{ $getitem->id }}]" value="{{$getitem->item_price}}">
                                      </td>
                                      <td>
-                                       <input class="form-control qty" placeholder="Quantity" type="number" name="item_qty[]" value="{{$getitem->item_qty}}">
+                                       <input class="form-control qty" placeholder="Quantity" type="number" name="item_qty[{{ $getitem->id }}]" value="{{$getitem->item_qty}}">
                                      </td>
                                      <td>
-                                       <span class="total" id="itemtotal">0.00</span><input type="hidden" class="total" name="item_total[]" value="{{$getitem->item_total}}">
+                                       <span class="total" id="itemtotal">0.00</span><input type="hidden" class="total" name="item_total[{{ $getitem->id }}]" value="{{$getitem->item_total}}">
                                      </td>
 
                                   </tr>

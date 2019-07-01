@@ -30,8 +30,6 @@
 
 
 
-
-
       <div class="row">
         <div class="col-md-12">
           <div class="x_panel">
@@ -56,7 +54,7 @@
             </div>
             <div class="x_content">
 
-              <div id='calendar'></div>
+              <div id='invoice-calendar'></div>
 
             </div>
           </div>
@@ -66,7 +64,7 @@
 
 <style media="screen">
 .x_title span {
-  color: #ffffff;
+  color: #000;
 }
 .fc button .fc-icon {
     color: #000;
@@ -84,3 +82,32 @@
 <!-- /page content -->
 
 @endsection
+
+@push('footer')
+<script type="text/javascript">
+(function($) {
+    $calendar = $('#invoice-calendar');
+    $calendar.fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,listMonth'
+        },
+        selectable: true,
+        selectHelper: true,
+        select: function(start, end, allDay) {
+            
+        },
+        eventClick: function(calEvent, jsEvent, view) {
+            console.log(calEvent, jsEvent, view);
+        },
+        events: {
+            url: "{{ route('invoice.calendar') }}",
+            error: function() {
+                $('#script-warning').show();
+            }
+        },
+    });
+})(jQuery);
+</script>
+@endpush

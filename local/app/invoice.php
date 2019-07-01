@@ -47,5 +47,8 @@ public static function totalamount(){
 
 }
 
-
+  public function items()
+  {
+    return $this->hasMany(item::class, 'invoice_id', 'id');
+  }
 }

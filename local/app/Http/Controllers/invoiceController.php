@@ -78,7 +78,6 @@ class invoiceController extends Controller
     }
 
 
-
       if($store){
         Session::flash('status','value');
         return redirect()->back();
@@ -150,33 +149,17 @@ class invoiceController extends Controller
           ]);
 
     $updatedata=$getdata->fill($input)->save();
-    $product_name = $request->item_name;
-    $product_price = $request->item_price;
-    $product_qty = $request->item_qty;
-    $item_total = $request->item_total;
-    $colid = $request->colid;
 
-    $main=$request->item_name;
-
-    for ($i = 1; $i <= count($main); $i++) {
-
-
-      foreach ($product_name as $index => $name) {
-        $trash=item::where('id',$colid)->update([
-          'item_name' => $product_name[$index],
-          'item_price' => $product_price[$index],
-          'item_qty' => $product_qty[$index],
+      foreach ($request->item_name as $index => $name) {
+        $trash=item::where('id',$index)->update([
+          'item_name' => $request->item_name[$index],
+          'item_price' => $request->item_price[$index],
+          'item_qty' => $request->item_qty[$index],
           'invoice_id' =>$id,
-          'item_total' => $item_total[$index],
+          'item_total' => $request->item_total[$index],
         ]);
 
       }
-
-
-
-
-
-    };
 
 
 

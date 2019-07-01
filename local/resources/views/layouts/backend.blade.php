@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -255,6 +252,7 @@
       $( "#invoice_dutedate" ).datepicker();
     } );
     </script>
+    @stack('footer')
 
   </body>
 </html>

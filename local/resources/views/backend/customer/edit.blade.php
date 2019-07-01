@@ -13,7 +13,7 @@
           @endif
           <form class="form-horizontal form-label-left" action="#" method="post" enctype="multipart/form-data">
             @csrf
-              <h3 class="text-center">Billing Address</h3>
+              <h3 class="text-center">Client Information</h3>
             <!-- name -->
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
@@ -27,12 +27,12 @@
           </div>
             <!-- company -->
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Referd By <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" name="company" value="{{old('company')}}" class="form-control col-md-7 col-xs-12">
-              @if($errors->has('company'))
-                <div class="error">{{$errors->first('company')}}</div>
+              <input type="text" name="refered_by" value="{{old('refered_by')}}" class="form-control col-md-7 col-xs-12">
+              @if($errors->has('refered_by'))
+                <div class="error">{{$errors->first('refered_by')}}</div>
               @endif
             </div>
           </div>
